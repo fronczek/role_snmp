@@ -1,0 +1,3 @@
+---
+snmp_packages_apt: 'snmp,snmpd'
+snmp_packages_yum: 'net-snmp, net-snmp-utils'

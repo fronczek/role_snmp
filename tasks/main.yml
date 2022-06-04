@@ -1,0 +1,20 @@
+---
+- name: Install {{ snmp_packages_apt }} packages (Debian/Ubuntu)
+  when: ansible_distribution|lower == 'debian' or ansible_distribution|lower == 'ubuntu'
+  apt:
+    name: "{{ snmp_packages_apt }}"
+    state: latest
+    dpkg_options: 'force-confold,force-confdef'
+
+- name: Install {{ snmp_packages_yum }} packages (CentOS)
+  when: ansible_distribution|lower == 'centos'
+  package:
+    name: "{{ snmp_packages_yum }}"
+    state: latest
+
+- name: Template snmp configuration
+  template:
+    src: templates/snmpd.conf.j2
+    dest: /etc/snmp/snmpd.conf
+  notify:
+    - restart snmpd

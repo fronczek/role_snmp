@@ -1,0 +1,4 @@
+---
+snmp_rocommunity: "someSecretROcommunity"
+snmp_syslocation: "Katowice"
+snmp_syscontact: "John Doe"
