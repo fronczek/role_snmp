@@ -16,5 +16,6 @@
   template:
     src: templates/snmpd.conf.j2
     dest: /etc/snmp/snmpd.conf
+    backup: true
   notify:
     - restart snmpd
