@@ -1,4 +1,5 @@
 ---
-snmp_rocommunity: "someSecretROcommunity"
-snmp_syslocation: "Katowice"
-snmp_syscontact: "John Doe"
+snmp_rocommunity: "snmp_role_default_RO_community"
+snmp_syslocation: "snmp role default syslocation"
+snmp_syscontact: "snmp role default contact"
+snmp_serverrole: "snmp role default server role"
