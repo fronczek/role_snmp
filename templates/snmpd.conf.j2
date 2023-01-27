@@ -1,6 +1,6 @@
 # Ansible managed file
 
-{% if snmp_support_ipv6|bool %}
+{% if snmp_listen_ipv6|bool %}
 agentAddress udp:161,udp6:[::1]:161
 {% else %}
 agentAddress udp:161

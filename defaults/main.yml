@@ -3,4 +3,4 @@ snmp_rocommunity: "snmp_role_default_RO_community"
 snmp_syslocation: "snmp role default syslocation"
 snmp_syscontact: "snmp role default contact"
 snmp_serverrole: "snmp role default server role"
-snmp_support_ipv6: false
+snmp_listen_ipv6: false
