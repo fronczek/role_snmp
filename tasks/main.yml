@@ -1,4 +1,10 @@
 ---
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: true
+  when: ansible_distribution|lower == 'debian' or ansible_distribution|lower == 'ubuntu'
+
 - name: Install {{ snmp_packages_apt }} packages (Debian/Ubuntu)
   when: ansible_distribution|lower == 'debian' or ansible_distribution|lower == 'ubuntu'
   apt:
