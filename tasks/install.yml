@@ -1,0 +1,15 @@
+---
+
+- name: Install {{ snmp_packages_apt }} packages (Debian/Ubuntu)
+  ansible.builtin.apt:
+    name: "{{ snmp_packages_apt }}"
+    state: present
+    dpkg_options: 'force-confold,force-confdef'
+    update_cache: true
+  when: ansible_distribution|lower == 'debian' or ansible_distribution|lower == 'ubuntu'
+
+- name: Install {{ snmp_packages_yum }} packages (RedHat/CentOS)
+  ansible.builtin.package:
+    name: "{{ snmp_packages_yum }}"
+    state: present
+  when: ansible_distribution|lower == 'centos' or ansible_distribution|lower == 'redhat'

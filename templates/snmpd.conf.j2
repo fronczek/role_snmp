@@ -9,8 +9,8 @@ agentAddress udp:161
 #view systemonly included   .1.3.6.1.2.1.1
 #view systemonly included   .1.3.6.1.2.1.25.1
 
-rocommunity {{ snmp_rocommunity }} default
-
+### Role:      {{snmp_serverrole}}
+rocommunity    {{ snmp_rocommunity }} default
 sysLocation    {{ snmp_syslocation }}
 sysContact     {{ snmp_syscontact }}
 sysServices    72

@@ -1,0 +1,16 @@
+---
+
+- name: Set facter facts - snmp_syslocation
+  ansible.builtin.copy:
+    content: "snmp_syslocation={{snmp_syslocation}}"
+    dest: /etc/facter/facts.d/snmp_syslocation.txt
+
+- name: Set facter facts - snmp_syscontact
+  ansible.builtin.copy:
+    content: "snmp_syscontact={{snmp_syscontact}}"
+    dest: /etc/facter/facts.d/snmp_syscontact.txt
+
+- name: Set facter facts - snmp_serverrole
+  ansible.builtin.copy:
+    content: "snmp_serverrole={{snmp_serverrole}}"
+    dest: /etc/facter/facts.d/snmp_serverrole.txt

@@ -1,22 +1,24 @@
 ---
 
-- name: Update apt cache
-  ansible.builtin.apt:
-    update_cache: true
-  when: ansible_distribution|lower == 'debian' or ansible_distribution|lower == 'ubuntu'
+- name: Install packages
+  include_tasks: install.yml
 
-- name: Install {{ snmp_packages_apt }} packages (Debian/Ubuntu)
-  when: ansible_distribution|lower == 'debian' or ansible_distribution|lower == 'ubuntu'
-  apt:
-    name: "{{ snmp_packages_apt }}"
-    state: latest
-    dpkg_options: 'force-confold,force-confdef'
+- name: Check if system have puppet facter installed
+  ansible.builtin.stat:
+    path: /opt/puppetlabs/bin/facter
+  register: facter_installed
 
-- name: Install {{ snmp_packages_yum }} packages (CentOS)
-  when: ansible_distribution|lower == 'centos'
-  package:
-    name: "{{ snmp_packages_yum }}"
-    state: latest
+- name: Define facter facts
+  include_tasks: facter.yml
+  when: facter_installed.stat.exists
+
+- name: "Check if Puppet managed node"
+  ansible.builtin.command:
+    cmd: grep -i Puppet /etc/snmp/snmpd.conf
+  check_mode: false
+  register: snmpd_puppet_managed
+  changed_when: snmpd_puppet_managed.rc == 0
+  failed_when: snmpd_puppet_managed.rc == 128
 
 - name: Template snmp configuration
   template:
@@ -25,3 +27,4 @@
     backup: true
   notify:
     - restart snmpd
+  when: not snmpd_puppet_managed.changed
