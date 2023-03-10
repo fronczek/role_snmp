@@ -2,15 +2,24 @@
 
 - name: Set facter facts - snmp_syslocation
   ansible.builtin.copy:
-    content: "snmp_syslocation={{snmp_syslocation}}"
+    content: "snmp_syslocation={{ snmp_syslocation }}"
     dest: /etc/facter/facts.d/snmp_syslocation.txt
+    owner: root
+    group: root
+    mode: 0644
 
 - name: Set facter facts - snmp_syscontact
   ansible.builtin.copy:
-    content: "snmp_syscontact={{snmp_syscontact}}"
+    content: "snmp_syscontact={{ snmp_syscontact }}"
     dest: /etc/facter/facts.d/snmp_syscontact.txt
+    owner: root
+    group: root
+    mode: 0644
 
 - name: Set facter facts - snmp_serverrole
   ansible.builtin.copy:
-    content: "snmp_serverrole={{snmp_serverrole}}"
+    content: "snmp_serverrole={{ snmp_serverrole }}"
     dest: /etc/facter/facts.d/snmp_serverrole.txt
+    owner: root
+    group: root
+    mode: 0644
