@@ -6,7 +6,7 @@
     dest: /etc/facter/facts.d/snmp_syslocation.txt
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
 
 - name: Set facter facts - snmp_syscontact
   ansible.builtin.copy:
@@ -14,7 +14,7 @@
     dest: /etc/facter/facts.d/snmp_syscontact.txt
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
 
 - name: Set facter facts - snmp_serverrole
   ansible.builtin.copy:
@@ -22,4 +22,4 @@
     dest: /etc/facter/facts.d/snmp_serverrole.txt
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
